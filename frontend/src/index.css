@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --primary-50: 233 241 248;
+  --primary-100: 209 227 241;
+  --primary-200: 169 205 227;
+  --primary-300: 127 183 213;
+  --primary-400: 90 155 197;
+  --primary-500: 49 130 206;
+  --primary-600: 44 82 130;
+  --primary-700: 42 67 101;
+  --primary-800: 26 54 93;
+  --primary-900: 26 54 93;
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Legal theme button */
+  .btn-legal {
+    @apply bg-primary-600 text-white px-4 py-2 rounded-legal font-medium
+           hover:bg-primary-700 focus:ring-4 focus:ring-primary-200
+           transition-all duration-200 ease-in-out;
+  }
+
+  .btn-legal-secondary {
+    @apply bg-gray-200 text-gray-700 px-4 py-2 rounded-legal font-medium
+           hover:bg-gray-300 focus:ring-4 focus:ring-gray-100
+           transition-all duration-200 ease-in-out;
+  }
+
+  .btn-legal-outline {
+    @apply border border-primary-600 text-primary-600 px-4 py-2 rounded-legal font-medium
+           hover:bg-primary-50 focus:ring-4 focus:ring-primary-200
+           transition-all duration-200 ease-in-out;
+  }
+
+  /* Card styles */
+  .card-legal {
+    @apply bg-white rounded-legal-lg shadow-legal border border-gray-200
+           hover:shadow-legal-lg transition-all duration-200 ease-in-out;
+  }
+
+  .card-legal-header {
+    @apply px-6 py-4 border-b border-gray-200 bg-gray-50 rounded-t-legal-lg;
+  }
+
+  .card-legal-body {
+    @apply px-6 py-4;
+  }
+
+  .card-legal-footer {
+    @apply px-6 py-4 border-t border-gray-200 bg-gray-50 rounded-b-legal-lg;
+  }
+
+  /* Form styles */
+  .form-input-legal {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-legal
+           focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+           transition-all duration-200 ease-in-out;
+  }
+
+  .form-input-legal-error {
+    @apply border-danger-500 focus:ring-danger-500 focus:border-danger-500;
+  }
+
+  .form-label-legal {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  .form-error-legal {
+    @apply text-danger-600 text-sm mt-1;
+  }
+
+  /* Table styles */
+  .table-legal {
+    @apply w-full bg-white border border-gray-200 rounded-legal-lg overflow-hidden;
+  }
+
+  .table-legal-header {
+    @apply bg-gray-50 border-b border-gray-200;
+  }
+
+  .table-legal-row {
+    @apply border-b border-gray-100 hover:bg-gray-50 transition-colors duration-150;
+  }
+
+  .table-legal-cell {
+    @apply px-6 py-3 text-sm text-gray-900;
+  }
+
+  .table-legal-header-cell {
+    @apply px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider;
+  }
+
+  /* Status badges */
+  .badge-draft {
+    @apply inline-flex px-2 py-1 text-xs font-medium rounded-full bg-warning-100 text-warning-800;
+  }
+
+  .badge-submitted {
+    @apply inline-flex px-2 py-1 text-xs font-medium rounded-full bg-success-100 text-success-800;
+  }
+
+  .badge-archived {
+    @apply inline-flex px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800;
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    @apply bg-gray-200 rounded animate-pulse;
+  }
+
+  .skeleton-text {
+    @apply h-4 mb-2 skeleton;
+  }
+
+  .skeleton-title {
+    @apply h-6 mb-4 skeleton;
+  }
+
+  /* Navigation styles */
+  .nav-link-legal {
+    @apply flex items-center px-3 py-2 text-sm font-medium rounded-md
+           transition-colors duration-200 ease-in-out;
+  }
+
+  .nav-link-legal-active {
+    @apply bg-primary-100 text-primary-700;
+  }
+
+  .nav-link-legal-inactive {
+    @apply text-gray-600 hover:bg-gray-50 hover:text-gray-900;
+  }
+
+  /* Alert styles */
+  .alert-success {
+    @apply bg-success-50 border border-success-200 text-success-800 rounded-legal p-4;
+  }
+
+  .alert-warning {
+    @apply bg-warning-50 border border-warning-200 text-warning-800 rounded-legal p-4;
+  }
+
+  .alert-danger {
+    @apply bg-danger-50 border border-danger-200 text-danger-800 rounded-legal p-4;
+  }
+
+  .alert-info {
+    @apply bg-primary-50 border border-primary-200 text-primary-800 rounded-legal p-4;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-legal-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
+  }
+
+  .bg-legal-gradient {
+    @apply bg-gradient-to-br from-primary-50 to-primary-100;
+  }
+
+  .shadow-legal-soft {
+    box-shadow: 0 2px 4px -1px rgba(26, 54, 93, 0.06), 0 1px 2px -1px rgba(26, 54, 93, 0.04);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-pulse-legal {
+    animation: pulseLegal 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .card-legal {
+    @apply shadow-none border border-gray-300;
+  }
+
+  .btn-legal,
+  .btn-legal-secondary,
+  .btn-legal-outline {
+    @apply border border-gray-400 text-gray-600 bg-white;
+  }
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+  .text-responsive-lg {
+    @apply text-lg;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-2xl;
+  }
+}
+
+/* Focus visible styles */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-white;
+}
+
+/* Dark mode support (future feature) */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-auto {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
