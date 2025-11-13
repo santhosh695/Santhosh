@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: law-mate-backend
+    env: python
+    plan: free
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && python run.py"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/auth/check-auth
+
+  - type: web
+    name: law-mate-frontend
+    env: static
+    plan: free
+    buildCommand: "cd frontend && npm run build"
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://law-mate-backend.onrender.com/api
