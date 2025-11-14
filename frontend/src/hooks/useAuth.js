@@ -305,11 +305,7 @@ export const PublicRoute = ({ children }) => {
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       // Redirect based on role
-      if (role === 'police') {
-        navigate('/police/dashboard');
-      } else {
-        navigate('/public/dashboard');
-      }
+      navigate('/dashboard');
     }
   }, [isAuthenticated, isLoading, role, navigate]);
 
