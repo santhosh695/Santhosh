@@ -74,15 +74,21 @@ npm start
 
 The frontend will be available at: http://localhost:3000
 
-## Default Test Accounts
+## Test Accounts
 
-### Police Account
-- Email: `police@test.gov.in`
+### Police Accounts (IPS Email)
+Any email ending with `@ips.gov.in`, `@police.gov.in`, or `@gov.in` gets police access:
+- Email: `officer.test@ips.gov.in`
 - Password: `Police123!`
 
-### Public Account
+### Public Accounts
+Any other email gets public access:
 - Email: `citizen@test.com`
 - Password: `Public123!`
+
+### How It Works
+- **IPS Email** → Automatic **Police Role** → FIR Management, Legal Research
+- **Regular Email** → **Public Role** → Complaint Writing, Legal Information
 
 ## Project Structure
 
