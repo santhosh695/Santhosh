@@ -74,9 +74,9 @@ export const AuthProvider = ({ children }) => {
 
         // Redirect based on role
         if (userData.role === 'police') {
-          navigate('/police/dashboard');
+          navigate('/dashboard');
         } else {
-          navigate('/public/dashboard');
+          navigate('/dashboard');
         }
 
         return { success: true, user: userData };
