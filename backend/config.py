@@ -22,7 +22,7 @@ class Config:
     HUGGINGFACE_API_KEY = os.environ.get('HUGGINGFACE_API_KEY')
 
     # CORS settings
-    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 'http://localhost:3000').split(',')
+    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001').split(',')
 
     # AI Service Configuration
     AI_SERVICE_PROVIDER = os.environ.get('AI_SERVICE_PROVIDER', 'huggingface')
