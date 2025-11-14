@@ -272,11 +272,7 @@ export const ProtectedRoute = ({ children, requiredRole = null }) => {
 
       if (requiredRole && role !== requiredRole) {
         // Redirect to appropriate dashboard based on role
-        if (role === 'police') {
-          navigate('/police/dashboard');
-        } else {
-          navigate('/public/dashboard');
-        }
+        navigate('/dashboard');
         return;
       }
     }
