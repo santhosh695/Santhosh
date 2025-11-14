@@ -21,16 +21,18 @@ def add_cors_headers(response):
 def test_endpoint():
     """Simple test endpoint without validation"""
     try:
-        return {
+        response = jsonify({
             "success": True,
             "message": "Backend is working!",
             "timestamp": str(datetime.datetime.now())
-        }
+        })
+        return add_cors_headers(response)
     except Exception as e:
-        return {
+        response = jsonify({
             "success": False,
             "error": str(e)
-        }
+        })
+        return add_cors_headers(response)
 
 @auth_bp.route('/debug', methods=['POST'])
 def debug_endpoint():
