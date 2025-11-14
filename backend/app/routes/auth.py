@@ -1,5 +1,6 @@
-from flask import Blueprint, request, jsonify, session
+from flask import Blueprint, request, jsonify, session, make_response
 from flask_login import login_user, logout_user, login_required, current_user
+from flask_cors import cross_origin
 import datetime
 from app import db
 from app.models.user import User, create_user, authenticate_user, get_user_by_email
@@ -7,6 +8,14 @@ from app.utils.validators import validate_email, validate_password, validate_nam
 from app.utils.helpers import format_error_response, format_success_response, log_user_activity
 
 auth_bp = Blueprint('auth', __name__)
+
+# CORS headers helper
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', 'http://localhost:3000')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+    response.headers.add('Access-Control-Allow-Credentials', 'true')
+    return response
 
 @auth_bp.route('/test', methods=['GET'])
 def test_endpoint():
