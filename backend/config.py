@@ -36,7 +36,7 @@ class Config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
     # Security settings
-    WTF_CSRF_ENABLED = True
+    WTF_CSRF_ENABLED = False  # Disabled for development
     WTF_CSRF_TIME_LIMIT = 3600
 
     # Pagination
