@@ -80,6 +80,23 @@ def create_app(config_name='development'):
             'cors': 'fixed'
         }
 
+    # Simple registration test endpoint
+    @app.route('/api/register-test', methods=['POST'])
+    def register_test():
+        try:
+            data = request.get_json()
+            return {
+                'success': True,
+                'message': 'Registration data received',
+                'data': data,
+                'received_fields': list(data.keys()) if data else []
+            }
+        except Exception as e:
+            return {
+                'success': False,
+                'error': str(e)
+            }
+
     # Health check endpoint for deployment services
     @app.route('/api/health')
     def health_check():
