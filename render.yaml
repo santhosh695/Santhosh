@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: law-mate-ai-legal-companion-backend
+    name: law-mate-ai-legal-companion
     env: python
     buildCommand: "cd backend && pip install -r requirements.txt"
     startCommand: "cd backend && python run.py"
@@ -9,13 +9,7 @@ services:
         value: production
       - key: PORT
         value: 10000
-    healthCheckPath: /api/auth/check-auth
-
-  - type: web
-    name: law-mate-ai-legal-companion-frontend
-    env: static
-    buildCommand: "cd frontend && npm run build"
-    staticPublishPath: frontend/build
-    envVars:
-      - key: REACT_APP_API_URL
-        value: https://law-mate-ai-legal-companion-backend.onrender.com/api
+      - key: FLASK_APP
+        value: app
+    healthCheckPath: /api/health
+    autoDeploy: true
