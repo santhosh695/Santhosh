@@ -34,17 +34,23 @@ def test_endpoint():
         })
         return add_cors_headers(response)
 
-@auth_bp.route('/debug', methods=['POST'])
+@auth_bp.route('/debug', methods=['POST', 'OPTIONS'])
 def debug_endpoint():
     """
     Debug endpoint to test registration data.
     """
+    # Handle OPTIONS request for CORS preflight
+    if request.method == 'OPTIONS':
+        response = jsonify({'status': 'ok'})
+        return add_cors_headers(response)
+
     try:
         data = request.get_json()
         print(f"Debug - Received data: {data}")
 
         if not data:
-            return format_error_response("No data provided")
+            response = jsonify(format_error_response("No data provided"))
+            return add_cors_headers(response)
 
         # Test validation
         email = data.get('email', '').strip()
@@ -63,17 +69,20 @@ def debug_endpoint():
 
         print(f"Debug - Validation results: {validation_results}")
 
-        return format_success_response(
+        response_data = format_success_response(
             data={
                 'received_data': data,
                 'validation_results': validation_results
             },
             message="Debug data received"
         )
+        response = jsonify(response_data)
+        return add_cors_headers(response)
 
     except Exception as e:
         print(f"Debug - Error: {str(e)}")
-        return format_error_response(f"Debug error: {str(e)}")
+        response = jsonify(format_error_response(f"Debug error: {str(e)}"))
+        return add_cors_headers(response)
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
