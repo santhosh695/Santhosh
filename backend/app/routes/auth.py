@@ -7,6 +7,47 @@ from app.utils.helpers import format_error_response, format_success_response, lo
 
 auth_bp = Blueprint('auth', __name__)
 
+@auth_bp.route('/debug', methods=['POST'])
+def debug_endpoint():
+    """
+    Debug endpoint to test registration data.
+    """
+    try:
+        data = request.get_json()
+        print(f"Debug - Received data: {data}")
+
+        if not data:
+            return format_error_response("No data provided")
+
+        # Test validation
+        email = data.get('email', '').strip()
+        password = data.get('password', '')
+        name = data.get('name', '').strip()
+        phone = data.get('phone', '').strip()
+
+        from app.utils.validators import validate_email, validate_password, validate_name, validate_phone
+
+        validation_results = {
+            'email': validate_email(email),
+            'password': validate_password(password),
+            'name': validate_name(name),
+            'phone': validate_phone(phone)
+        }
+
+        print(f"Debug - Validation results: {validation_results}")
+
+        return format_success_response(
+            data={
+                'received_data': data,
+                'validation_results': validation_results
+            },
+            message="Debug data received"
+        )
+
+    except Exception as e:
+        print(f"Debug - Error: {str(e)}")
+        return format_error_response(f"Debug error: {str(e)}")
+
 @auth_bp.route('/register', methods=['POST'])
 def register():
     """
