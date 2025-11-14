@@ -93,7 +93,7 @@ def validate_name(name):
 
 def validate_phone(phone):
     """
-    Validate phone number.
+    Validate phone number (simplified for development).
 
     Args:
         phone (str): Phone number to validate
@@ -113,23 +113,11 @@ def validate_phone(phone):
     if not phone_digits.isdigit():
         return False, "Phone number can only contain digits and formatting characters"
 
-    # Check length (Indian phone numbers: 10 digits for mobile, landline varies)
+    # Basic length validation (relaxed for international compatibility)
     if len(phone_digits) < 6 or len(phone_digits) > 15:
         return False, "Phone number has invalid length"
 
-    # Basic Indian phone number validation
-    if len(phone_digits) == 10:
-        # Mobile number validation
-        if not phone_digits.startswith(('6', '7', '8', '9')):
-            return False, "Invalid Indian mobile number"
-    elif len(phone_digits) == 11 and phone_digits.startswith('0'):
-        # Mobile number with leading 0
-        if not phone_digits.startswith(('06', '07', '08', '09')):
-            return False, "Invalid Indian mobile number"
-    elif len(phone_digits) >= 11:
-        # Landline with area code
-        pass  # Accept longer numbers for landlines with area codes
-
+    # Accept all valid phone numbers (removed country-specific validation)
     return True, None
 
 def validate_file_upload(file):
