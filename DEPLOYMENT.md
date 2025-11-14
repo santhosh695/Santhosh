@@ -57,7 +57,7 @@ npm start
 
 ## Backend Deployment (Render)
 
-Render provides free hosting for Python web applications.
+Render provides hosting for Python web applications.
 
 ### 1. Prepare Repository
 
