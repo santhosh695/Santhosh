@@ -32,8 +32,7 @@ i18n
     fallbackLng: 'en', // Fallback language
     debug: process.env.NODE_ENV === 'development',
 
-    ns: ['common'], // Default namespace
-    defaultNS: 'common',
+    // No namespace needed for simple translation
 
     interpolation: {
       escapeValue: false, // React already escapes values
