@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: law-mate-backend
+    name: law-mate-ai-legal-companion-backend
     env: python
     buildCommand: "cd backend && pip install -r requirements.txt"
     startCommand: "cd backend && python run.py"
@@ -12,10 +12,10 @@ services:
     healthCheckPath: /api/auth/check-auth
 
   - type: web
-    name: law-mate-frontend
+    name: law-mate-ai-legal-companion-frontend
     env: static
     buildCommand: "cd frontend && npm run build"
     staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://law-mate-backend.onrender.com/api
+        value: https://law-mate-ai-legal-companion-backend.onrender.com/api
