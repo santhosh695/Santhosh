@@ -67,4 +67,21 @@ def create_app(config_name='development'):
     def unauthorized_error(error):
         return {'error': 'Unauthorized'}, 401
 
+    # Health check endpoint for deployment services
+    @app.route('/api/health')
+    def health_check():
+        return {
+            'status': 'healthy',
+            'message': 'Law Mate API is running',
+            'version': '1.0.0',
+            'features': {
+                'authentication': True,
+                'fir_management': True,
+                'complaint_writing': True,
+                'legal_search': True,
+                'subscriptions': False,
+                'payments': False
+            }
+        }
+
     return app
