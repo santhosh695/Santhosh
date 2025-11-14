@@ -4,14 +4,14 @@ A comprehensive web application serving as an AI-powered legal companion for bot
 
 ## Features
 
-- 🔐 **Role-Based Authentication** (Police vs Public access)
-- 📝 **FIR Management** with AI analysis
-- 📋 **Complaint Writing** with AI formatting
-- 🔍 **Legal Research** (IPC, CrPC, other acts)
+- 🔐 **IPS Email Authentication** - Automatic police role detection
+- 📝 **FIR Management** with AI-powered legal analysis
+- 📋 **Complaint Writing** with AI formatting assistance
+- 🔍 **Legal Research** (IPC, CrPC, and other Indian legal acts)
 - 🌐 **Multilingual Support** (English, Hindi, Tamil, Telugu)
-- 📄 **PDF/Word Export** functionality
-- 📎 **File Upload** for evidence
-- 🎨 **Professional Legal UI** design
+- 📄 **Document Generation** (PDF and Word export)
+- 📎 **Evidence Upload** for files and documents
+- 🎨 **Professional Legal UI** for police and citizens
 
 ## Quick Start
 
