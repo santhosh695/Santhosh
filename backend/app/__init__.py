@@ -19,7 +19,11 @@ def create_app(config_name='development'):
     db.init_app(app)
     login_manager.init_app(app)
     csrf.init_app(app)
-    cors.init_app(app, origins=app.config['CORS_ORIGINS'])
+    cors.init_app(app,
+                  origins=app.config['CORS_ORIGINS'],
+                  methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+                  allow_headers=['Content-Type', 'Authorization'],
+                  supports_credentials=True)
 
     # Configure login manager
     login_manager.login_view = 'auth.login'
