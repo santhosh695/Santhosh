@@ -120,8 +120,9 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
+    // Tailwind plugins temporarily removed for compilation
+    // require('@tailwindcss/forms'),
+    // require('@tailwindcss/typography'),
   ],
   prefix: '',
   important: false,
