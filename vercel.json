@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "law-mate-frontend",
+  "name": "law-mate-ai-legal-companion",
   "builds": [
     {
       "src": "frontend/package.json",
