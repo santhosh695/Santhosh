@@ -18,7 +18,17 @@ def create_app(config_name='development'):
     # Initialize extensions
     db.init_app(app)
     login_manager.init_app(app)
-    csrf.init_app(app)
+
+    # Disable CSRF for development
+    if app.config['DEBUG']:
+        print("🔓 CSRF protection disabled for development")
+    else:
+        csrf.init_app(app,
+                      origins=app.config['CORS_ORIGINS'],
+                      methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+                      allow_headers=['Content-Type', 'Authorization'],
+                      supports_credentials=True)
+
     cors.init_app(app,
                   origins=app.config['CORS_ORIGINS'],
                   methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
