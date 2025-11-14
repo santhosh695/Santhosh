@@ -36,7 +36,7 @@ def validate_email(email):
 
 def validate_password(password):
     """
-    Validate password strength.
+    Validate password strength (simplified for development).
 
     Args:
         password (str): Password to validate
@@ -47,32 +47,16 @@ def validate_password(password):
     if not password:
         return False, "Password is required"
 
-    if len(password) < 8:
-        return False, "Password must be at least 8 characters long"
+    if len(password) < 6:
+        return False, "Password must be at least 6 characters long"
 
     if len(password) > 128:
         return False, "Password is too long"
 
-    # Check for at least one uppercase letter
-    if not re.search(r'[A-Z]', password):
-        return False, "Password must contain at least one uppercase letter"
-
-    # Check for at least one lowercase letter
-    if not re.search(r'[a-z]', password):
-        return False, "Password must contain at least one lowercase letter"
-
-    # Check for at least one digit
-    if not re.search(r'\d', password):
-        return False, "Password must contain at least one number"
-
-    # Check for at least one special character
-    if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
-        return False, "Password must contain at least one special character"
-
     # Check for common weak passwords
     weak_passwords = [
-        'password', 'password123', '12345678', 'qwerty123',
-        'admin123', 'letmein', 'welcome123'
+        'password', 'password123', '123456', '12345678', 'qwerty123',
+        'admin123', 'letmein', 'welcome123', 'test', 'test123'
     ]
     if password.lower() in weak_passwords:
         return False, "Password is too common. Please choose a stronger password"
