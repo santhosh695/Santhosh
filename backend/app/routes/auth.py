@@ -7,6 +7,21 @@ from app.utils.helpers import format_error_response, format_success_response, lo
 
 auth_bp = Blueprint('auth', __name__)
 
+@auth_bp.route('/test', methods=['GET'])
+def test_endpoint():
+    """Simple test endpoint without validation"""
+    try:
+        return {
+            "success": True,
+            "message": "Backend is working!",
+            "timestamp": str(datetime.datetime.now())
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
 @auth_bp.route('/debug', methods=['POST'])
 def debug_endpoint():
     """
