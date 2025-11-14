@@ -26,11 +26,8 @@ def validate_email(email):
     if len(email) > 120:
         return False, "Email address is too long"
 
-    # Check for common invalid domains
-    invalid_domains = ['example.com', 'test.com', 'invalid.com']
-    domain = email.split('@')[-1]
-    if domain in invalid_domains:
-        return False, "Invalid email domain"
+    # Allow all valid email domains (removed restrictions for development)
+    # Invalid domains check removed for broader compatibility
 
     return True, None
 
