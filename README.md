@@ -1,8 +1,41 @@
 # Law Mate - AI-Powered Legal Companion
 
-A comprehensive web application serving as an AI-powered legal companion for both police officers and citizens in India.
+A comprehensive web application for police officers and citizens in India, providing AI-powered legal assistance with FIR management, complaint writing, and legal research.
 
-## Features
+## 🚀 Quick Deploy
+
+### Option 1: One-Click Deployment
+
+**Frontend (Vercel):**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/law-mate-ai-legal-companion)
+
+**Backend (Render):**
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/yourusername/law-mate-ai-legal-companion)
+
+### Option 2: Manual Deployment
+
+#### Step 1: Deploy Backend to Render
+1. Push this code to GitHub
+2. Go to [render.com](https://render.com)
+3. Connect your GitHub repository
+4. Create a new "Web Service"
+5. Use the `render.yaml` configuration
+6. Set environment variables as needed
+
+#### Step 2: Deploy Frontend to Vercel
+1. Go to [vercel.com](https://vercel.com)
+2. Connect your GitHub repository
+3. Use the `vercel.json` configuration
+4. Set environment variable: `REACT_APP_API_URL` to your backend URL
+
+## 🌐 Live Demo Links
+
+After deployment, your app will be available at:
+
+- **Frontend:** `https://law-mate-ai-legal-companion.vercel.app`
+- **Backend:** `https://law-mate-ai-legal-companion.onrender.com`
+
+## ✨ Features
 
 - 🔐 **IPS Email Authentication** - Automatic police role detection
 - 📝 **FIR Management** with AI-powered legal analysis
@@ -12,6 +45,8 @@ A comprehensive web application serving as an AI-powered legal companion for bot
 - 📄 **Document Generation** (PDF and Word export)
 - 📎 **Evidence Upload** for files and documents
 - 🎨 **Professional Legal UI** for police and citizens
+- ❌ **NO SUBSCRIPTION PLANS** - Completely free to use
+- ❌ **NO PAYMENT FEATURES** - No billing or payment processing
 
 ## Quick Start
 
