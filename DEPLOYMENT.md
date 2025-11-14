@@ -221,11 +221,10 @@ Monitor application health using the endpoints:
 - Backend: `https://api.lawmate.in/api/auth/check-auth`
 - Frontend: `https://lawmate.in`
 
-### 2. Error Monitoring
+### 2. Application Monitoring
 
-Consider adding error monitoring:
-- **Sentry**: For error tracking
-- **UptimeRobot**: For uptime monitoring
+- **Health Checks**: Monitor application endpoints
+- **Log Monitoring**: Check application logs
 
 ### 3. Backup Strategy
 
