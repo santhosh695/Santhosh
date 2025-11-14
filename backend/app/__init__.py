@@ -71,6 +71,15 @@ def create_app(config_name='development'):
     def unauthorized_error(error):
         return {'error': 'Unauthorized'}, 401
 
+    # Simple test endpoint
+    @app.route('/api/test', methods=['GET'])
+    def simple_test():
+        return {
+            'success': True,
+            'message': 'Backend is working!',
+            'cors': 'fixed'
+        }
+
     # Health check endpoint for deployment services
     @app.route('/api/health')
     def health_check():
@@ -87,5 +96,13 @@ def create_app(config_name='development'):
                 'payments': False
             }
         }
+
+    # Add CORS headers to all responses
+    @app.after_request
+    def after_request(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        return response
 
     return app
