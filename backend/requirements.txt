@@ -1,0 +1,36 @@
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+Flask-Login==0.6.3
+Flask-WTF==1.1.1
+Flask-CORS==4.0.0
+Flask-Migrate==4.0.5
+Werkzeug==2.3.7
+SQLAlchemy==2.0.23
+
+# PDF Generation
+WeasyPrint==59.0
+python-docx==0.8.11
+
+# HTTP Requests
+requests==2.31.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Production Server
+gunicorn==21.2.0
+
+# Development and Testing
+pytest==7.4.2
+pytest-flask==1.2.0
+
+# Optional AI/ML Libraries (install as needed)
+# transformers==4.33.2
+# torch==2.0.1
+# tensorflow==2.13.0
+
+# File Processing
+Pillow==10.0.1
+
+# Security
+bcrypt==4.0.1

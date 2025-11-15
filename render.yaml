@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: law-mate-ai-legal-companion
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && python run.py"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: FLASK_APP
+        value: app
+    healthCheckPath: /api/health
+    autoDeploy: true

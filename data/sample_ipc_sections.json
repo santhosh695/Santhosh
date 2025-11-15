@@ -1,0 +1,130 @@
+{
+  "ipc_sections": [
+    {
+      "act": "Indian Penal Code",
+      "section": "302",
+      "title": "Punishment for murder",
+      "description": "Whoever commits murder shall be punished with death, or imprisonment for life, and shall also be liable to fine.",
+      "punishment": "Death or imprisonment for life",
+      "bailable": "No",
+      "cognizable": "Yes",
+      "court": "Court of Session",
+      "examples": [
+        "Intentional killing of another person",
+        "Causing death with the knowledge that it would likely result in death"
+      ],
+      "keywords": ["murder", "killing", "homicide", "death"]
+    },
+    {
+      "act": "Indian Penal Code",
+      "section": "304",
+      "title": "Punishment for culpable homicide not amounting to murder",
+      "description": "Whoever commits culpable homicide not amounting to murder shall be punished with imprisonment for life, or imprisonment of either description for a term which may extend to ten years, and shall also be liable to fine.",
+      "punishment": "Imprisonment for life or up to 10 years",
+      "bailable": "No",
+      "cognizable": "Yes",
+      "court": "Court of Session",
+      "examples": [
+        "Death caused by rash or negligent act",
+        "Unintentional killing during a fight"
+      ],
+      "keywords": ["culpable homicide", "negligent killing", "unintentional death"]
+    },
+    {
+      "act": "Indian Penal Code",
+      "section": "379",
+      "title": "Punishment for theft",
+      "description": "Whoever commits theft shall be punished with imprisonment of either description for a term which may extend to three years, or with fine, or with both.",
+      "punishment": "Imprisonment up to 3 years, or fine, or both",
+      "bailable": "Yes",
+      "cognizable": "Yes",
+      "court": "Magistrate of the first class",
+      "examples": [
+        "Stealing jewelry from a house",
+        "Taking someone's wallet without permission",
+        "Shoplifting goods from a store"
+      ],
+      "keywords": ["theft", "stealing", "robbery", "taking property"]
+    },
+    {
+      "act": "Indian Penal Code",
+      "section": "420",
+      "title": "Cheating and dishonestly inducing delivery of property",
+      "description": "Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine.",
+      "punishment": "Imprisonment up to 7 years and fine",
+      "bailable": "No",
+      "cognizable": "Yes",
+      "court": "Magistrate of the first class",
+      "examples": [
+        "Fake investment schemes",
+        "Online fraud scams",
+        "Impersonation for financial gain"
+      ],
+      "keywords": ["cheating", "fraud", "deception", "fake", "scam"]
+    },
+    {
+      "act": "Indian Penal Code",
+      "section": "323",
+      "title": "Punishment for voluntarily causing hurt",
+      "description": "Whoever, except in the case provided for by section 334, voluntarily causes hurt, shall be punished with imprisonment of either description for a term which may extend to one year, or with fine which may extend to one thousand rupees, or with both.",
+      "punishment": "Imprisonment up to 1 year, or fine up to Rs. 1000, or both",
+      "bailable": "Yes",
+      "cognizable": "Yes",
+      "court": "Any Magistrate",
+      "examples": [
+        "Physical assault causing minor injuries",
+        "Punching someone during an argument",
+        "Hitting someone with an object"
+      ],
+      "keywords": ["assault", "hurt", "violence", "physical attack"]
+    },
+    {
+      "act": "Indian Penal Code",
+      "section": "506",
+      "title": "Punishment for criminal intimidation",
+      "description": "Whoever commits criminal intimidation shall be punished with imprisonment of either description for a term which may extend to two years, or with fine, or with both.",
+      "punishment": "Imprisonment up to 2 years, or fine, or both",
+      "bailable": "Yes",
+      "cognizable": "Yes",
+      "court": "Any Magistrate",
+      "examples": [
+        "Threatening someone with harm",
+        "Blackmail for money",
+        "Warning of consequences to force action"
+      ],
+      "keywords": ["threat", "intimidation", "blackmail", "warning"]
+    },
+    {
+      "act": "Indian Penal Code",
+      "section": "354",
+      "title": "Assault or criminal force to woman with intent to outrage her modesty",
+      "description": "Whoever assaults or uses criminal force to any woman, intending to outrage or knowing it to be likely that he will outrage her modesty, shall be punished with imprisonment of either description for a term which shall not be less than one year but which may extend to five years, and shall also be liable to fine.",
+      "punishment": "Imprisonment 1-5 years and fine",
+      "bailable": "No",
+      "cognizable": "Yes",
+      "court": "Magistrate of the first class",
+      "examples": [
+        "Inappropriate touching",
+        "Sexual harassment",
+        "Assault with sexual intent"
+      ],
+      "keywords": ["sexual assault", "harassment", "outraging modesty", "woman"]
+    },
+    {
+      "act": "Indian Penal Code",
+      "section": "363",
+      "title": "Punishment for kidnapping",
+      "description": "Whoever kidnaps any person from India or from lawful guardianship, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine.",
+      "punishment": "Imprisonment up to 7 years and fine",
+      "bailable": "No",
+      "cognizable": "Yes",
+      "court": "Magistrate of the first class",
+      "examples": [
+        "Abducting a child",
+        "Taking someone against their will",
+        "Illegal confinement"
+      ],
+      "keywords": ["kidnapping", "abduction", "illegal confinement"]
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+import re
+from flask import current_app
+from werkzeug.datastructures import FileStorage
+
+def validate_email(email):
+    """
+    Validate email format and domain requirements.
+
+    Args:
+        email (str): Email address to validate
+
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not email:
+        return False, "Email is required"
+
+    email = email.strip().lower()
+
+    # Basic email format validation
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    if not re.match(email_pattern, email):
+        return False, "Invalid email format"
+
+    # Length validation
+    if len(email) > 120:
+        return False, "Email address is too long"
+
+    # Allow all valid email domains (removed restrictions for development)
+    # Invalid domains check removed for broader compatibility
+
+    return True, None
+
+def validate_password(password):
+    """
+    Validate password strength (simplified for development).
+
+    Args:
+        password (str): Password to validate
+
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not password:
+        return False, "Password is required"
+
+    if len(password) < 6:
+        return False, "Password must be at least 6 characters long"
+
+    if len(password) > 128:
+        return False, "Password is too long"
+
+    # Check for common weak passwords
+    weak_passwords = [
+        'password', 'password123', '123456', '12345678', 'qwerty123',
+        'admin123', 'letmein', 'welcome123', 'test', 'test123'
+    ]
+    if password.lower() in weak_passwords:
+        return False, "Password is too common. Please choose a stronger password"
+
+    return True, None
+
+def validate_name(name):
+    """
+    Validate user name.
+
+    Args:
+        name (str): Name to validate
+
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not name:
+        return False, "Name is required"
+
+    name = name.strip()
+
+    if len(name) < 2:
+        return False, "Name must be at least 2 characters long"
+
+    if len(name) > 100:
+        return False, "Name is too long"
+
+    # Check for valid characters (letters, spaces, hyphens, apostrophes)
+    if not re.match(r'^[a-zA-Z\s\-\'\.]+$', name):
+        return False, "Name can only contain letters, spaces, hyphens, and apostrophes"
+
+    # Check for consecutive spaces
+    if '  ' in name:
+        return False, "Name cannot contain consecutive spaces"
+
+    return True, None
+
+def validate_phone(phone):
+    """
+    Validate phone number (simplified for development).
+
+    Args:
+        phone (str): Phone number to validate
+
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not phone:
+        return True, None  # Phone is optional
+
+    phone = phone.strip()
+
+    # Remove common formatting characters
+    phone_digits = re.sub(r'[+\-\s\(\)]', '', phone)
+
+    # Check if all characters are digits
+    if not phone_digits.isdigit():
+        return False, "Phone number can only contain digits and formatting characters"
+
+    # Basic length validation (relaxed for international compatibility)
+    if len(phone_digits) < 6 or len(phone_digits) > 15:
+        return False, "Phone number has invalid length"
+
+    # Accept all valid phone numbers (removed country-specific validation)
+    return True, None
+
+def validate_file_upload(file):
+    """
+    Validate uploaded file.
+
+    Args:
+        file (FileStorage): Uploaded file object
+
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not file:
+        return False, "No file provided"
+
+    if not isinstance(file, FileStorage):
+        return False, "Invalid file object"
+
+    # Check file size
+    max_size = current_app.config.get('MAX_CONTENT_LENGTH', 50 * 1024 * 1024)  # 50MB default
+    file.seek(0, 2)  # Seek to end
+    file_size = file.tell()
+    file.seek(0)  # Reset pointer
+
+    if file_size > max_size:
+        return False, f"File size exceeds maximum limit of {max_size // (1024 * 1024)}MB"
+
+    # Check file extension
+    filename = file.filename
+    if not filename:
+        return False, "File must have a name"
+
+    allowed_extensions = current_app.config.get('ALLOWED_EXTENSIONS', set())
+    if '.' not in filename:
+        return False, "File must have an extension"
+
+    extension = filename.rsplit('.', 1)[1].lower()
+    if extension not in allowed_extensions:
+        return False, f"File type '{extension}' is not allowed"
+
+    # Check for potentially dangerous file names
+    dangerous_patterns = ['../', '..\\', '/', '\\', ':', '*', '?', '"', '<', '>', '|']
+    for pattern in dangerous_patterns:
+        if pattern in filename:
+            return False, "File name contains invalid characters"
+
+    return True, None
+
+def validate_fir_data(data):
+    """
+    Validate FIR creation/update data.
+
+    Args:
+        data (dict): FIR data to validate
+
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not data:
+        return False, "No data provided"
+
+    # Complaint text validation
+    complaint_text = data.get('complaint_text', '').strip()
+    if not complaint_text:
+        return False, "Complaint text is required"
+
+    if len(complaint_text) < 10:
+        return False, "Complaint text must be at least 10 characters long"
+
+    if len(complaint_text) > 10000:
+        return False, "Complaint text is too long (max 10,000 characters)"
+
+    # FIR type validation
+    fir_type = data.get('fir_type', '').strip()
+    if fir_type and len(fir_type) > 50:
+        return False, "FIR type is too long"
+
+    # Incident location validation
+    incident_location = data.get('incident_location', '').strip()
+    if incident_location and len(incident_location) > 200:
+        return False, "Incident location is too long"
+
+    return True, None
+
+def validate_complaint_data(data):
+    """
+    Validate complaint creation/update data.
+
+    Args:
+        data (dict): Complaint data to validate
+
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not data:
+        return False, "No data provided"
+
+    # Original text validation
+    original_text = data.get('original_text', '').strip()
+    if not original_text:
+        return False, "Complaint text is required"
+
+    if len(original_text) < 10:
+        return False, "Complaint text must be at least 10 characters long"
+
+    if len(original_text) > 10000:
+        return False, "Complaint text is too long (max 10,000 characters)"
+
+    # Category validation
+    category = data.get('category', '').strip()
+    if category and len(category) > 50:
+        return False, "Category is too long"
+
+    return True, None
